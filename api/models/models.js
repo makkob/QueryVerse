@@ -21,7 +21,8 @@ const Wall = sequelize.define("wall", {
 
 const PostsOnTheWall = sequelize.define("postsOnTheWall", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  sender: { type: DataTypes.INTEGER },
+  senderId: { type: DataTypes.INTEGER },
+  wallId: { type: DataTypes.INTEGER },
 });
 
 const Post = sequelize.define("post", {
@@ -33,8 +34,9 @@ const Post = sequelize.define("post", {
 
 const CommentsBelowThePost = sequelize.define("commentsBelowThePost", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  title: { type: DataTypes.STRING, allowNull: false },
-  description: { type: DataTypes.STRING, allowNull: false },
+  data: { type: DataTypes.STRING, allowNull: false },
+  likes: { type: DataTypes.INTEGER, defaultValue: 0 },
+  disLikes: { type: DataTypes.INTEGER, defaultValue: 0 },
 });
 
 User.hasOne(Wall);
