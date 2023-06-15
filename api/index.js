@@ -1,11 +1,10 @@
 require("dotenv").config();
 const express = require("express");
 const sequelize = require("./db");
-// const models = require('./models/models');
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
 // const router = require("./routes/index");
-// const errorHandler = require("./middleware/ErrorHandlingMiddleware");
+const errorHandler = require("./middleware/ErrorHandlingMiddleware");
 const path = require("path");
 
 const PORT = process.env.PORT || 5000;
@@ -23,11 +22,7 @@ app.use(fileUpload({}));
 // app.use("/api", router);
 
 // Обработка ошибок , последний Middleware
-// app.use(errorHandler);
-
-// app.get('/', (req, res) => {
-//     res.status(200).json({ message: 'Воно працює=)' });
-// });
+app.use(errorHandler);
 
 const start = async () => {
   try {
