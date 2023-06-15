@@ -12,9 +12,7 @@ const User = sequelize.define("user", {
   dateOfBirthsday: { type: DataTypes.DATEONLY },
   likes: { type: DataTypes.TINYINT, defaultValue: 0 },
   disLikes: { type: DataTypes.TINYINT, defaultValue: 0 },
-  discount: { type: DataTypes.TINYINT, defaultValue: 0 },
   role: { type: DataTypes.STRING, defaultValue: "USER" },
-  favouriteBeer: { type: DataTypes.STRING },
 });
 
 const Wall = sequelize.define("wall", {
@@ -23,19 +21,14 @@ const Wall = sequelize.define("wall", {
 
 const PostsOnTheWall = sequelize.define("postsOnTheWall", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  sender: { type: DataTypes.INTEGER },
 });
 
 const Post = sequelize.define("post", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  nameUA: { type: DataTypes.STRING, unique: true, allowNull: false },
-  nameENG: { type: DataTypes.STRING, unique: true, allowNull: false },
-  price: { type: DataTypes.INTEGER, allowNull: false },
-  oldPrice: { type: DataTypes.INTEGER, allowNull: false },
-  promoPrice: { type: DataTypes.INTEGER, allowNull: false },
-  rating: { type: DataTypes.INTEGER, defaultValue: 0 },
-  available: { type: DataTypes.STRING, unique: true, allowNull: false },
-  stockQuantity: { type: DataTypes.STRING, unique: true, allowNull: false },
-  img: { type: DataTypes.STRING, allowNull: false },
+  data: { type: DataTypes.STRING, allowNull: false },
+  likes: { type: DataTypes.INTEGER, defaultValue: 0 },
+  disLikes: { type: DataTypes.INTEGER, defaultValue: 0 },
 });
 
 const CommentsBelowThePost = sequelize.define("commentsBelowThePost", {

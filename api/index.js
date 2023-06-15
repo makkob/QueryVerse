@@ -3,7 +3,7 @@ const express = require("express");
 const sequelize = require("./db");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
-// const router = require("./routes/index");
+const router = require("./routes/index");
 const errorHandler = require("./middleware/ErrorHandlingMiddleware");
 const path = require("path");
 
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.static(path.resolve(__dirname, "static")));
 // что б работать с файлами
 app.use(fileUpload({}));
-// app.use("/api", router);
+app.use("/api", router);
 
 // Обработка ошибок , последний Middleware
 app.use(errorHandler);
