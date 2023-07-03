@@ -1,6 +1,6 @@
 const uuid = require("uuid");
 const path = require("path");
-const { Post, PostsOnTheWall } = require("../models/models");
+const { Post, PostsOnTheWall , CommentsBelowThePost } = require("../models/models");
 
 const ApiError = require("../error/ApiError");
 
@@ -48,6 +48,27 @@ class PostController {
       console.log(e);
     }
   }
+  
+  async  getOne(req, res) {
+    try {
+      const { id } = req.params;
+      const post = await Post.findOne({
+        where: { id },
+        include: [{ model: CommentsBelowThePost, as: "commentsBelowThePost" }],
+      });
+  console.log(">>>>>>>>>>>>>>>>>>>>>>>>",post);
+      if (!post) {
+        return res.status(404).json({ error: "Post not found" });
+      }
+  
+      return res.json(post);
+    } catch (error) {
+      console.error("Error retrieving item:", error);
+      return res.status(500).json({ error: "Internal server error" });
+    }
+  }
+  
+
 
   //   async getAll(req, res, next) {
   //     let { brandId, typeId, limit, page } = req.query;
