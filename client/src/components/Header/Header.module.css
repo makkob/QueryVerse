@@ -1,0 +1,268 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700");
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+.header {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); */
+  top: 0rem;
+  right: 0.313rem;
+  left: 0rem;
+  position: sticky;
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+  max-height: 10vw;
+  /* background: rgb(63, 75, 4) 100%; */
+  object-fit: cover;
+  height: 5vw;
+  /* background: linear-gradient(
+    0deg,
+    #369fa1 30%,
+    #1d6c76 100%
+  ); */
+
+  background-color: #132b37;
+  border-bottom: 3px solid #0f0802;
+  /* border:#62513f solid 2px; */
+  box-shadow: 0px 0px 5px #0f0802;
+  z-index: 999;
+}
+
+.p .email {
+  font-size: 1vw;
+  font-family: "PT Serif", serif;
+  text-align: center;
+  align-items: center;
+}
+
+.email {
+  color: #efeee9;
+  margin-left: 1vw;
+  font-size: 1.1vw;
+  text-shadow: 0px 0px 10px #efeee9;
+}
+.headerLeft {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.phoneIcon {
+  font-size: 2vw;
+  margin-left: 2vw;
+}
+
+.number {
+  font-size: 1.5vw;
+  font-style: italic;
+  font-family: "Lobster Two", cursive;
+  color: #efeee9;
+  font-weight: 100;
+  padding: 1vw;
+  border: 10;
+}
+
+a:link.number {
+  display: flex;
+
+  font-weight: 800;
+  text-decoration: none;
+}
+a:visited.number {
+  font-weight: 800;
+  text-decoration: none;
+}
+a:hover.number {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+.headerMiddle {
+  display: flex;
+  margin: 0rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.headerRight {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  vertical-align: middle;
+  gap: 0.2vw;
+}
+
+/* Кнопки ЛК и ВХОД */
+.button {
+  font-size: 0.7vw;
+  font-family: "PT Serif", serif;
+  width: max-content;
+  padding: 0px;
+  letter-spacing: 0.125rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #0f0802;
+  cursor: pointer;
+  border: 0px solid;
+  margin:2px;
+  border-radius: 3px;
+  /* box-shadow: 0.063rem 0.063rem 0rem 0rem, 0.125rem 0.125rem 0rem 0rem,
+    0.188rem 0.188rem 0rem 0rem, 0.25rem 0.25rem 0rem 0rem,
+    0.313rem 0.313rem 0rem 0rem; */
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  background-color: white;
+  font-weight: 700;
+}
+
+.button:active {
+  top: 0.113rem;
+  left: 0.113rem;
+}
+
+@media (min-width: 48rem) {
+  .button {
+    padding: 0.25rem 0.75rem;
+  }
+}
+
+/* Выбор темы  */
+
+.themeSelector {
+  display: inline-block;
+  height: 1.4vw;
+  width: 2.8vw;
+  background: #000000;
+  border-radius: 1.5vw;
+  cursor: pointer;
+}
+.themeSelector input {
+  position: absolute;
+  opacity: 0;
+}
+.themeSelector div {
+  height: 1.4vw;
+  width: 1.4vw;
+  border-radius: 1vw;
+  background: #fff;
+  box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.3);
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  transition: all 300ms;
+  cursor: pointer;
+}
+
+.themeSelector input:checked + div {
+  -webkit-transform: translate3d(1.4vw, 0, 0);
+  -moz-transform: translate3d(1.4vw, 0, 0);
+  transform: translate3d(1.4vw, 0, 0);
+}
+.languageSelector {
+  display: inline-block;
+  height: 1.4vw;
+  width: 2.8vw;
+  background: #000000;
+  border-radius: 1.5vw;
+  cursor: pointer;
+}
+.languageSelector input {
+  position: absolute;
+  opacity: 0;
+}
+.languageSelector div {
+  height: 1.4vw;
+  width: 1.4vw;
+  border-radius: 1.4vw;
+  background: #fff;
+  box-shadow: 0 0.1em 0.3em #0f0802;
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  transition: all 300ms;
+  cursor: pointer;
+}
+
+.languageSelector input:checked + div {
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
+
+.space {
+  margin-left: 5%;
+}
+
+.IMG {
+  width: 2.5vw;
+  /* height: 5rem; */
+  margin-left: 5vw;
+}
+
+.icon {
+  margin-left: 0.313rem;
+  margin-right: 0.313rem;
+  width: 1.4vw;
+  height: 1.4vw;
+}
+
+.pyvnagavan {
+  height: 15vw;
+  max-height: 4vw;
+}
+
+.buttonShop  {
+  /* background-color: #132b37; */
+  /* background-color: #000000; */
+  background-color: #ffffff;
+  color: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 4px;
+  padding: 0.3vw 0.4vw;
+  margin-left: 1vw;
+  font-size: 0.8vw;
+  appearance: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  outline: none;
+  text-align: center;
+  align-items: center;
+  font-family: "PT Serif", serif;
+}
+.buttonShop:hover {
+  cursor:pointer  
+}
+
+.buttonShop option, .buttonShop optgroup{
+  background-color: white;
+  color:#000000
+}
+
+
+.buttonShop select :focus {
+  outline: none;
+}
+
+/* .buttonShop option {
+  color: #000000;
+  border: none;
+} */
+
+.nameGroup, .name {
+  font-weight: 800;
+  text-align: center;
+  align-items: center;
+  background-color: #ffffff;
+  color: #000000;
+}
+.name {
+  font-weight: 600;
+}
+
+.shop{
+  font-family: "PT Serif", serif;
+color:white;
+margin-left:1vw;
+font-size: 1vw;
+}
