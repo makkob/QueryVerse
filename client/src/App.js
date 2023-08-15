@@ -26,7 +26,7 @@ function App() {
               <Route key={path} path={path} component={Component} exact />
             ))}
 
-          {/* Перенаправлення на сторінку логіну, якщо користувач не аутентифікований */}
+          {/* Перенаправлення на сторінку логіну, якщо користувач не аутентифікований   */}
           <Redirect to="/login" />
         </Switch>
       </Router>
