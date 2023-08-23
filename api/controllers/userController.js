@@ -56,32 +56,38 @@ class UserController {
   }
 
   async login(req, res, next) {
-    const { identifier, password } = req.body;
-    const user = await User.findOne({
-      where: {
-        [Op.or]: [{ email: identifier }, { phone: identifier }],
-      },
-    });
-
-    if (!user) {
-      return next(ApiError.internal("Такого користувача не існує =("));
+    try {
+      const { identifier, password } = req.body;
+      const user = await User.findOne({
+        where: {
+          [Op.or]: [{ email: identifier }, { phone: identifier }],
+        },
+      });
+  
+      if (!user) {
+        return next(ApiError.internal("Такого користувача не існує =("));
+      }
+  
+      // Сравниваем пароли
+      let comparePassword = bcrypt.compareSync(password, user.password);
+      if (!comparePassword) {
+        return next(ApiError.internal("Не вірний пароль =("));
+      }
+  
+      const wall = await Wall.findOne({
+        where: {
+          userId: user.id,
+        },
+      });
+  
+      const token = generateJwt(wall.id, user.id, user.email);
+      return res.json({ token });
+    } catch (error) {
+      // Обработка ошибок
+      return next(error); // Передаем ошибку в следующий middleware
     }
-
-    // Сравниваем пароли
-    let comparePassword = bcrypt.compareSync(password, user.password);
-    if (!comparePassword) {
-      return next(ApiError.internal("Не вірний пароль =("));
-    }
-
-    const wall = await Wall.findOne({
-      where: {
-        userId: user.id,
-      },
-    });
-
-    const token = generateJwt(wall.id, user.id, user.email);
-    return res.json({ token });
   }
+  
 
   //   async check(req, res, next) {
   //     const basketID = await Basket.findOne({

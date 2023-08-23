@@ -1,28 +1,28 @@
-// import { applyMiddleware, combineReducers, createStore } from "redux";
-// import { composeWithDevTools } from "redux-devtools-extension";
-// import thunk from "redux-thunk";
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
 
-// import { itemListReducer } from "./reducers/itemReducers";
-
-
-// let rootReducer = combineReducers({
-//   itemState: itemListReducer,
-
-// });
-
-// const initialState = {
-//   itemState: {},
-
-// };
-
-// const middleware = [thunk];
-
-// let store = createStore(
-//   rootReducer,
-//   initialState,
+import { userReducer } from "./reducers/userReducers";
 
 
-//   composeWithDevTools(applyMiddleware(...middleware))
-// );
+let rootReducer = combineReducers({
+    userState: userReducer,
 
-// export default store;
+});
+
+const initialState = {
+  userState: {},
+
+};
+
+const middleware = [thunk];
+
+let store = createStore(
+  rootReducer,
+  initialState,
+
+
+  composeWithDevTools(applyMiddleware(...middleware))
+);
+
+export default store;

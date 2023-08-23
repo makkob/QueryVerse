@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
+import {  useDispatch, useSelector } from "react-redux";
 import { TextField, Button, Container, Box, Typography } from '@mui/material';
+import { login } from "../../actions/userAction";
 
 export default function UserLogin() {
   const [formData, setFormData] = useState({
     identifier: '',
     password: ''
   });
+
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,6 +24,7 @@ export default function UserLogin() {
     console.log(formData);
     // Тут ви можете додати логіку для відправки даних на ваше API
     // Наприклад, викликати функцію для відправки formData на ваше API
+    dispatch(login(formData.identifier , formData.password));
   };
 
   return (
