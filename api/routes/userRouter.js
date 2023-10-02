@@ -8,7 +8,7 @@ router.post("/login", userController.login);
 
 // router.post('/logout', userController.logout);
 
-//для активации акаунта по ссылке которая будет приходить по почте
+//для активации  акаунта по ссылке которая будет приходить по почте
 // router.get('/activate/:link', userController.activate);
 
 //перезапись access токена если он умер
