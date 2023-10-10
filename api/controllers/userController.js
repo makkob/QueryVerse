@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { User, Wall } = require("../models/models");
 const uuid = require("uuid");
+const mailservice = require ("../service/mail-service")
 
 const generateJwt = (wallId, id, email) => {
   return jwt.sign(
@@ -36,13 +37,17 @@ class UserController {
     }
     // Хешируем пароль
     const hashPassword = await bcrypt.hash(password, 5);
-    
+
+    const activationLink = uuid.v4(); // v34fa-asfasf-142saf-sa-asf
     // Создаем пользователя
     const user = await User.create({
       email,
       password: hashPassword,
       role: "USER",
     });
+
+    await mailservice.sendActivationMail(email ,activationLink );
+
     // Создаем для пользователя корзину
     await Wall.create({ userId: user.id });
     const wallID = await Wall.findOne({
@@ -79,7 +84,7 @@ class UserController {
           userId: user.id,
         },
       });
-      console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+      
   
       const token = generateJwt(wall.id, user.id, user.email);
       return res.json({ token });
