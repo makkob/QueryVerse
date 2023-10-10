@@ -1,19 +1,13 @@
 import React from "react";
-
 import UserRegistration from "../components/UserRegistration";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+
+import Layout from "../components/Layout";
 
 const SignUp = () => {
   return (
-    <>
-      <Header />
+    <Layout>
       <UserRegistration />
-       {/* Что бы закрепить оба футера внизу */}
-       <div style={{bottom: "0", width: "100%", height:"80vh"}} />
-        <Footer />
-
-    </>
+    </Layout>
   );
 };
 

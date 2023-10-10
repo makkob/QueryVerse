@@ -1,15 +1,20 @@
 import React from "react";
+import Link from "react-router-dom"
 
-import Header from "../components/Header";
-import NotFound from "../components/NotFound";
-import Footer from "../components/Footer";
+import Layout from "../components/Layout";
 
 const NotFoundPage = () => {
   return (
-    <div>
-      <Header />
-      <NotFound /> <Footer />
-    </div>
+    <Layout>
+      <div>
+        <p>404</p>
+        <p>Такої сторінки не існує</p>
+        <p>Неправильно набрана адреса або такої сторінки не існує.</p>
+        <div>
+          <Link to="/">Головна</Link>
+        </div>
+      </div>
+    </Layout>
   );
 };
 export default NotFoundPage;
