@@ -36,7 +36,7 @@ class UserController {
     }
     // Хешируем пароль
     const hashPassword = await bcrypt.hash(password, 5);
-
+    
     // Создаем пользователя
     const user = await User.create({
       email,
@@ -51,10 +51,10 @@ class UserController {
       },
     });
     const token = generateJwt(wallID.id, user.id, user.email);
-
+    
     return res.json({ token });
   }
-
+  
   async login(req, res, next) {
     try {
       const { identifier, password } = req.body;
@@ -63,22 +63,23 @@ class UserController {
           [Op.or]: [{ email: identifier }, { phone: identifier }],
         },
       });
-  
+      
       if (!user) {
         return next(ApiError.internal("Такого користувача не існує =("));
       }
-  
+      
       // Сравниваем пароли
       let comparePassword = bcrypt.compareSync(password, user.password);
       if (!comparePassword) {
         return next(ApiError.internal("Не вірний пароль =("));
       }
-  
+      
       const wall = await Wall.findOne({
         where: {
           userId: user.id,
         },
       });
+      console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
   
       const token = generateJwt(wall.id, user.id, user.email);
       return res.json({ token });
