@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import {  useDispatch, useSelector } from "react-redux";
-import { TextField, Button, Container, Box, Typography } from '@mui/material';
+import { useDispatch, useSelector } from "react-redux";
+import { TextField, Button, Container, Box, Typography, Link } from '@mui/material';
 import { login } from "../../actions/userAction";
+import { Link as RouterLink } from 'react-router-dom';
 
 export default function UserLogin() {
   const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ export default function UserLogin() {
     console.log(formData);
     // Тут ви можете додати логіку для відправки даних на ваше API
     // Наприклад, викликати функцію для відправки formData на ваше API
-    dispatch(login(formData.identifier , formData.password));
+    dispatch(login(formData.identifier, formData.password));
   };
 
   return (
@@ -62,6 +63,9 @@ export default function UserLogin() {
             Увійти
           </Button>
         </Box>
+        <Typography variant="body2">
+        New user? <Link component={RouterLink} to="/registration">Sign up now!</Link>
+        </Typography>
       </Box>
     </Container>
   );
