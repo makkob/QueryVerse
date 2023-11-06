@@ -23,6 +23,7 @@ class PostController {
       //       })
       //     );
       //   }
+      
 
       const post = await Post.create({
         data,
